@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <type.h>
 
 // setteur
@@ -23,13 +24,24 @@ float** donnees(matrice* mat)
 matrice creation(int nb_ligne, int nb_colone, float** matrix)
 {
     matrice resulta;
-    // implementation ici
+    resulta.matrix = matrix;
+    resulta.nb_ligne =nb_ligne;
+    resulta.nb_colone = nb_colone;
+
     return resulta;
 }
 matrice generation(int nb_ligne, int nb_colone)
 {
     matrice resulta;
-    // implementation ici
+    int i,j;
+    
+    resulta = creation(nb_ligne,nb_colone,construction(nb_ligne,nb_colone));
+    srand((unsigned int)time(NULL));
+
+    for(i = 0; i < nb_ligne; i++)
+        for(j = 0; j < nb_colone; j++)
+            resulta.matrix[i][j] = (float)rand();
+            
     return resulta;
 }
 matrice chargement(FILE* file) // iclure le stdlib.h avant de inclure type.h dans source
@@ -48,12 +60,22 @@ void afficher(matrice* mat)
 // utile
 float** construction(int nb_ligne, int nb_colone)
 {
-    float** matrix;
-    // implementation ici
+    float** matrix  = NULL;
+    int i;
+    matrix = (float**)malloc(sizeof(float*)*nb_ligne);
+
+    for( i = 0; i < nb_ligne; i++)
+        matrix[i] = (float*)malloc(sizeof(float)*nb_colone);
+
     return matrix;
 }
-void destruction(float**, int, int)
+void destruction(float** matrix, int nb_ligne, int nb_colone) 
 {
+    int i;
+    for(i = 0 ; i < nb_ligne; i++)
+        free(matrix[i]);
+
+    free(matrix);
 
     return;
 }
