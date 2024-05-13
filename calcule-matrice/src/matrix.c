@@ -2,27 +2,48 @@
 #include <type.h>
 #include <matrix.h>
 
-matrice transposition(matrice* mat)
+matrice transposition(matrice* matA)
 {
-    matrice resulta;
+    matrice matB;
+    matB = creation(no_colone(matA),no_ligne(matA),construction(no_colone(matA),no_ligne(matA)));
+    int i,j;
 
-    return resulta;
+    for(i = 0; i < no_ligne(matA); i++)
+        for(j = 0; j < no_colone(matA); j++)
+        donnees(&matB)[j][i] = donnees(matA)[i][j];
+    return matB;
 }
+
 matrice addition(matrice* matA, matrice* matB)
 {
-    matrice resulta;
+    matrice matC;
+    matC = creation(no_ligne(matA),no_colone(matA),construction(no_ligne(matA),no_colone(matA)));
+    int i,j;
+    for(i = 0; i < no_ligne(matA); i++)
+        for(j = 0; j < no_colone(matA); j++)
+            donnees(&matC)[i][j] = donnees(matA)[i][j] + donnees(matB)[i][j];
 
-    return resulta;
+    return matC;
 }
-matrice multiplicationScalaire(matrice* mat, float x)
+
+matrice multiplicationScalaire(matrice* matA, float x)
 {
-    matrice resulta;
+    matrice matC;
+    matC = creation(no_ligne(matA),no_colone(matA),construction(no_ligne(matA),no_colone(matA)));
 
-    return resulta;
+    int i,j;
+    for(i = 0; i < no_ligne(matA); i++)
+        for(j = 0; j < no_colone(matA); j++)
+            donnees(&matC)[i][j] = donnees(matA)[i][j] * x;;
+
+    return matC;
 }
+
 matrice multiplication(matrice* matA,matrice* matB)
 {
-    matrice resulta;
+    matrice matC;
+    matC = creation(no_ligne(matA),no_colone(matB),construction(no_ligne(matA),no_colone(matB)));
 
-    return resulta;
+    // en cour
+    return matC;
 }

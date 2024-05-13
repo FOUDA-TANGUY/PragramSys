@@ -41,10 +41,10 @@ matrice generation(int nb_ligne, int nb_colone)
     for(i = 0; i < nb_ligne; i++)
         for(j = 0; j < nb_colone; j++)
             resulta.matrix[i][j] = (float)rand();
-            
+
     return resulta;
 }
-matrice chargement(FILE* file) // iclure le stdlib.h avant de inclure type.h dans source
+matrice chargement(FILE* file) // inclure le stdlib.h avant de inclure type.h dans source
 {
     matrice resulta;
     // implementation ici
@@ -52,8 +52,17 @@ matrice chargement(FILE* file) // iclure le stdlib.h avant de inclure type.h dan
 }
 void afficher(matrice* mat)
 {
-    // implementation ici
+    int i,j;
+    printf("+-----------------+\n");
+    for(i = 0; i < mat->nb_ligne; i++)
+    {
+        printf("[");
+        for(j = 0; j < mat->nb_colone; j++)
+            printf("%6.2f",mat->matrix[i][j]);
 
+        printf("]\n");
+    }
+    printf("+-----------------+\n");
     return;
 }
 
