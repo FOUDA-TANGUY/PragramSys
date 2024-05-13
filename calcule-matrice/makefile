@@ -1,9 +1,9 @@
 # Compiler
 CC = gcc
 # Flags de compilation
-CFLAGS = -Wall -Wextra -I include
+CFLAGS = -I include
 # Commande pour supprimer
-RM = rm -rf
+RM = rm
 
 # Dossier contenant les fichiers source
 SRCDIR = src
@@ -22,7 +22,7 @@ $(TARGET): $(OBJS)
 
 # Règle générique pour créer les fichiers objets à partir des fichiers sources
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 # Création du dossier obj s'il n'existe pas
 $(shell mkdir -p $(OBJDIR))
@@ -32,4 +32,4 @@ run :
 
 # Règle pour nettoyer les fichiers objets et l'exécutable
 clean:
-	rm -f $(OBJS) $(TARGET)
+	$(RM) $(OBJS) $(TARGET)
