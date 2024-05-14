@@ -40,14 +40,14 @@ matrice generation(int nb_ligne, int nb_colone)
 
     for(i = 0; i < nb_ligne; i++)
         for(j = 0; j < nb_colone; j++)
-            resulta.matrix[i][j] = (float)rand();
+            resulta.matrix[i][j] = (float)(rand()%15);
 
     return resulta;
 }
 matrice chargement(FILE* file) // inclure le stdlib.h avant de inclure type.h dans source
 {
     matrice resulta;
-    // implementation ici
+    fscanf(file,"%d %d\n",&resulta.nb_ligne,&resulta.nb_colone);
     return resulta;
 }
 void afficher(matrice* mat)
@@ -78,7 +78,7 @@ float** construction(int nb_ligne, int nb_colone)
 
     return matrix;
 }
-void destruction(float** matrix, int nb_ligne, int nb_colone) 
+void destruction(float** matrix, int nb_ligne) 
 {
     int i;
     for(i = 0 ; i < nb_ligne; i++)

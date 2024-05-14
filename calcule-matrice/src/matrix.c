@@ -44,6 +44,15 @@ matrice multiplication(matrice* matA,matrice* matB)
     matrice matC;
     matC = creation(no_ligne(matA),no_colone(matB),construction(no_ligne(matA),no_colone(matB)));
 
-    // en cour
+    int i,j,k;
+    for(i = 0; i < no_ligne(&matC); i++)
+    {
+        for(j = 0; j < no_colone(&matC); j++)
+        {
+            donnees(&matC)[i][j] = 0;
+            for(k = 0; k < no_colone(matA); k++)
+                donnees(&matC)[i][j] += donnees(matA)[i][k]*donnees(matB)[k][j];
+        }
+    }
     return matC;
 }

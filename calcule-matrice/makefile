@@ -1,7 +1,7 @@
 # Compiler
 CC = gcc
 # Flags de compilation
-CFLAGS = -I include
+CFLAGS = -Wall -Wextra -Werror -I include
 # Commande pour supprimer
 RM = rm
 

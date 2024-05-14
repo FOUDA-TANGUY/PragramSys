@@ -22,7 +22,7 @@
 
     // utile
     float** construction(int, int);
-    void destruction(float**, int, int);
+    void destruction(float**, int);
 
     
 
